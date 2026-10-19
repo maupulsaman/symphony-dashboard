@@ -3,6 +3,7 @@
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Suspense, useCallback, useState } from "react";
+import { DashboardFooter } from "@/components/layout/DashboardFooter";
 import { Sidebar } from "@/components/layout/Sidebar";
 import { SidebarFallback } from "@/components/layout/SidebarFallback";
 import { TopNavbar } from "@/components/layout/TopNavbar";
@@ -53,6 +54,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             flexGrow: 1,
             minWidth: 0,
             width: "100%",
+            minHeight: `calc(100vh - ${layout.navbarHeight}px)`,
+            display: "flex",
+            flexDirection: "column",
             px: { xs: 2, sm: 3 },
             py: { xs: 2.5, sm: 3.5 },
             "&:focus": {
@@ -60,7 +64,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             },
           }}
         >
-          {children}
+          <Box sx={{ flexGrow: 1 }}>{children}</Box>
+          <DashboardFooter />
         </Box>
       </Box>
     </Box>
